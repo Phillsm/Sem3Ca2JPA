@@ -5,6 +5,7 @@
  */
 package control;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,12 +13,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.Person;
+import model.RoleSchool;
 
 /**
  *
  * @author Phill
  */
-public class DBFacade {
+public class DBFacade implements JSONFacade{
     
 
     public DBFacade() {
@@ -41,10 +43,16 @@ public class DBFacade {
     }
     
     public Person getPersonById(Integer id){
+        Person returnp;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("CA2PU");
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("SELECT p FROM Person p WHERE p.id = :id");
+        q.setParameter("id", id);
+        returnp = (Person) q.getSingleResult();
+        em.getTransaction().commit();
+        return returnp;
         
-        return em.find(Person.class, 1);
     }
     
     public List<Person> getAllPersons(){
@@ -71,6 +79,54 @@ public class DBFacade {
         q.setParameter("id", p.getId());
         q.executeUpdate();
         em.getTransaction().commit();
+    }
+    
+    public void deleteRoleSchool(RoleSchool r){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CA2PU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("DELETE FROM RoleSchool p WHERE p.id = :id");
+        q.setParameter("id", r.getId());
+        q.executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    @Override
+    public String getPersonsAsJSON(){
+        
+        List<Person> p = getAllPersons();
+        String json = new Gson().toJson(p);
+        return json;
+    }
+
+    @Override
+    public String GetPersonAsJson(Integer id) {
+        Person p = getPersonById(id);
+        return new Gson().toJson(p);
+    }
+
+    // Right now returns inputjson as object but could fetch from DB somehow if there
+    // was strictly enforced minimum values on input json object
+    @Override
+    public Person addPersonFromGson(String json) {
+        Person p = new Gson().fromJson(json, Person.class);
+        persist(p);
+        return p;
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public RoleSchool addRoleFromGson(String json, Integer id) {
+        RoleSchool rs = new Gson().fromJson(json, RoleSchool.class);
+        persist(rs);
+        return rs;//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Person delete(Integer id) {
+        Person returnperson = getPersonById(id);
+        deletePerson(returnperson);
+        return returnperson;//To change body of generated methods, choose Tools | Templates.
     }
     
 }
