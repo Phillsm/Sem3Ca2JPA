@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +30,19 @@ public class Person implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Expose
     private Integer id;
+    @Expose
     private String firstName;
+    @Expose
     private String lastName;
+    @Expose
     private String phone;
+    @Expose
     private String email;
     
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @Expose
     private List<RoleSchool> roles;
 
     public Person(String firstName, String lastName, String phone, String email, List<RoleSchool> roles) {
@@ -47,6 +54,7 @@ public class Person implements Serializable {
     }
     
     public void AddRole(RoleSchool role){
+        if (roles == null){roles = new ArrayList();}
         role.setOwner(this);
         roles.add(role);
     }
@@ -121,7 +129,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "model.NewEntity[ id=" + id + " ]";
+        return "model.Person[ id=" + id + " ]";
     }
     
 }

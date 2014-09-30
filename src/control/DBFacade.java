@@ -6,12 +6,16 @@
 package control;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import model.Course;
 import model.Person;
 import model.RoleSchool;
 
@@ -94,11 +98,23 @@ public class DBFacade implements JSONFacade{
         em.getTransaction().commit();
     }
     
+    public void deleteCourse(Course r){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CA2PU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query q = em.createQuery("DELETE FROM Course c WHERE c.id = :id");
+        q.setParameter("id", r.getId());
+        q.executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    
     @Override
     public String getPersonsAsJSON(){
         
         List<Person> p = getAllPersons();
-        String json = new Gson().toJson(p);
+        Type ptype = new TypeToken<List<Person>>() {}.getType();
+        String json = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().toJson(p, ptype);
         return json;
     }
 

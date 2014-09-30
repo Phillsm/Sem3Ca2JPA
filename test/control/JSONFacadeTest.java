@@ -71,6 +71,12 @@ public class JSONFacadeTest {
         assertTrue(p.stream().anyMatch(pe -> pe.getFirstName().equals("Test2") ));
         assertTrue(p.stream().anyMatch(pe -> pe.getFirstName().equals("Test3") ));
     }
+    
+    @Test
+    public void testingweirdbug(){
+        
+    }
+    
 
     /**
      * Test of GetPersonAsJson method, of class JSONFacade.

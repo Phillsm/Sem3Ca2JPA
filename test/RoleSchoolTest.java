@@ -50,6 +50,10 @@ public class RoleSchoolTest {
         db.persist(t);
         db.persist(s);
         db.persist(at);
+        
+        db.deleteRoleSchool(s);
+        db.deleteRoleSchool(t);
+        db.deleteRoleSchool(at);
     }
 
     // TODO add test methods here.

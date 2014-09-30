@@ -7,6 +7,7 @@
     <class>model.Teacher</class>
     <class>model.Student</class>
     <class>model.AssistentTeacher</class>
+    <class>model.Course</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ca2"/>
       <property name="javax.persistence.jdbc.user" value="ca2"/>
