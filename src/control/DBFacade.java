@@ -75,8 +75,11 @@ public class DBFacade implements JSONFacade{
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("CA2PU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+        Query qe = em.createQuery("DELETE FROM RoleSchool rs WHERE rs.owner.id = :id");
         Query q = em.createQuery("DELETE FROM Person p WHERE p.id = :id");
         q.setParameter("id", p.getId());
+        qe.setParameter("id", p.getId());
+        qe.executeUpdate();
         q.executeUpdate();
         em.getTransaction().commit();
     }

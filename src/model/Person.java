@@ -6,10 +6,16 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,7 +34,22 @@ public class Person implements Serializable {
     private String lastName;
     private String phone;
     private String email;
+    
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<RoleSchool> roles;
 
+    public Person(String firstName, String lastName, String phone, String email, List<RoleSchool> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.roles = roles;
+    }
+    
+    public void AddRole(RoleSchool role){
+        role.setOwner(this);
+        roles.add(role);
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -66,6 +87,7 @@ public class Person implements Serializable {
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
+        this.roles = new ArrayList<RoleSchool>();
     }
 
     public Person() {

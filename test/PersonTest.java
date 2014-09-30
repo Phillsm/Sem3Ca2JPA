@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.Person;
+import model.RoleSchool;
+import model.Teacher;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,12 +49,14 @@ public class PersonTest {
     @Test
     public void testPersistance(){
         Person test = new Person("Phill", "Smith", "25741729", "p@psmith.dk");
+        RoleSchool rs = new Teacher("Professor of awesome", "Monkeyball");
+        test.AddRole(rs);
         db.persist(test);
         
         List<Person> returnpersons = db.getAllPersons();
         assertTrue(returnpersons.stream().anyMatch(p -> p.getFirstName().equals("Phill")));
         
-        int id = returnpersons.get(0).getId();
+        int id = test.getId();
         System.out.println(id);
         Person retrievedperson = db.getPersonById(id);
         System.out.println(retrievedperson.getFirstName());
