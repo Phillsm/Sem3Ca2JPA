@@ -18,6 +18,7 @@ import javax.persistence.Query;
 import model.Course;
 import model.Person;
 import model.RoleSchool;
+import model.Teacher;
 
 /**
  *
@@ -147,5 +148,38 @@ public class DBFacade implements JSONFacade{
         deletePerson(returnperson);
         return returnperson;//To change body of generated methods, choose Tools | Templates.
     }
+    
+    //Charles, tilpasses.
+     /*
+    Pass in true to create a new instance. Usefull for testing.
+  */
+     private static DBFacade instance = new DBFacade();
+    
+  public static DBFacade getFacade(boolean reseet){
+    if(true){
+      instance = new DBFacade();
+    }
+    return instance;
+  }
+  
+  DBFacade db;
+  public void createTestData() {
+////    addPerson(gson.toJson(new Person("Lars","Mortensen","1234")));
+             
+//        Person test = new Person("Charles", "Day", "1234", "day@dk.dk");
+//        RoleSchool rs = new Teacher("Professor of shat", "jalol");
+//        test.AddRole(rs);
+//        db.persist(test);
+        Person p1;
+        Person p2;    
+      
+        DBFacade db = new DBFacade();
+        p1 = new Person("Test1", "Test1", "321332", "Testemail");
+        p2 = new Person("Test2", "Test2", "321332", "Testemail");
+        db.persist(p1);
+        db.persist(p2);
+        
+      
+  }
     
 }
