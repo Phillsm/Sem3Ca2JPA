@@ -10,6 +10,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import control.DBFacade;
+import exceptions.NotFoundException;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -72,21 +73,37 @@ public class RestCRUD {
             String method = he.getRequestMethod().toUpperCase();
             switch (method) {
                 case "GET":
+                    System.out.println("tester1");
                     try {
                         String path = he.getRequestURI().getPath();
                         int lastIndex = path.lastIndexOf("/");
+                        System.out.println("tester2");
                         if (lastIndex > 0) {
                             String idStr = path.substring(lastIndex + 1);
                             int id = Integer.parseInt(idStr);
                             response = facade.GetPersonAsJson(id);
+                            System.out.println("tester3");
                         } else {
                             response = facade.getPersonsAsJSON();
+                            System.out.println("tester4");
                         }
                     } catch (NumberFormatException nfe) {
+                        System.out.println("tester5");
                         response = "Id is not a number";
-                        status = 404;        
-                    }
-                break;
+                        status = 404;      
+                        nfe.getMessage();
+                    } 
+//                    catch (NotFoundException nfe) {
+//                        response = nfe.getMessage();
+//                        status = 404;
+//                    }
+                    break;
+
+            }
+            he.getResponseHeaders().add("Content-Type", "application/json");
+            he.sendResponseHeaders(status, 0);
+            try (OutputStream os = he.getResponseBody()) {
+                os.write(response.getBytes());
             }
         }
     }
