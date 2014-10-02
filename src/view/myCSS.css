@@ -1,13 +1,24 @@
 
 body {  
+
     background-color : buttonhighlight;
 }
 
+h3 {
+    text-align : center;
+}
+
+h1 {
+   
+    font-family : Lucida Console;
+    font-size : 250%;
+    padding-top : 50px;
+}
 #headLine {
+    border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-
-    padding-top : 50px;
+    
     color : black;
     text-align : center;
     background-color : appworkspace;
@@ -16,7 +27,9 @@ body {
 
 }
 
-#findAllDIV {
+#addAndDeleteDIV {
+    border-radius: 25px;
+    float: left;
     position: relative;
     background-color : appworkspace;
     width : 400px;
@@ -26,29 +39,24 @@ body {
 }
 
 #findPersonDIV {
+    border-radius: 25px;
     position: relative;
     float : right;
     right : 470px;
     background-color : appworkspace;
     width : 400px;
-    height: 250px;
+    height: 570px;
 
-}
-
-#deletePersonDIV {
-    background-color : appworkspace;
-    width : 400px;
-    height: 250px;
-}
-
-#addPersonDIV { 
-    background-color : appworkspace;
-    width : 400px;
-    height: 250px;
 }
 
 #assignRoleDIV {
+     float: left;
+    border-radius: 25px;
+    margin-top: 300px;
+    position: fixed;
+    left : 470px;
     background-color : appworkspace;
     width : 400px;
     height: 250px;
+    
 }

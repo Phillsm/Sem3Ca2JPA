@@ -12,32 +12,55 @@
         <link rel="stylesheet" type="text/css" href="myCSS.css">
     </head>
     <body>
+
         <div id="headLine"> <h1>CA 2 - WEBSITE</h1> </div>
-        
-        <div id="menuBar"></div>
-        
+
+        <br>
+        <br>
+        <br>
+
         <div id="findPersonDIV">
-            <p>person ID:</p>
-            <input type="text" name="playerid" id="personInput"/>
+            <h3>FIND PERSON/ALL</h3>
+
+            person ID:
+            <input type="text" name="personid" id="personInput"/>
             <button id="findPersonBtn">findPerson</button>
-        </div>
-        
-        <div id="findAllDIV">
             <button id="findAllBtn">findAll</button>
+
+            <!--findPerson result output-->
+            <p id="personSearch"></p>
+            <!--findAll result output-->
+            <div id="result"></div>
         </div>
-        
-        <div id="addPersonDIV">           
+
+
+        <div id="addAndDeleteDIV">
+            <h3>ADD AND DELETE</h3>
+            
+            
+            <!--findAll result output-->
+            firstname:<input type="text" name="" id="firstNameInput"/><br>
+            lastname<input type="text" name="" id="lastNameInput"/><br>
+            email<input type="text" name="" id="emailInput"/><br>
+            phone<input type="text" name="" id="phoneInput"/><br>
+            
+            <button id="findAllBtn">add person</button><br>
+            id to delete:<input type="text" name="idToDelete" id="deleteID"/><br>
+            <button id="findAllBtn">delete</button>
+            
         </div>
-        
-        <div id="deletePersonDIV">           
+
+        <br>
+
+        <div id="assignRoleDIV">
+            <h3>ASSIGN A ROLE</h3>
         </div>
-        
-        <div id="assignRoleDIV">           
-        </div>
-        
-        
-        
-        <div id="result"></div>
-        
+
+
+        <script>
+            $("#findAllBtn").bind("click", showAll);
+            $("#findPersonBtn").bind("click", findPerson);
+        </script>
+
     </body>
 </html>
