@@ -1,0 +1,54 @@
+
+body {  
+    background-color : buttonhighlight;
+}
+
+#headLine {
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top : 50px;
+    color : black;
+    text-align : center;
+    background-color : appworkspace;
+    width : 1000px;
+    height: 130px;
+
+}
+
+#findAllDIV {
+    position: relative;
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+    left : 470px;
+
+}
+
+#findPersonDIV {
+    position: relative;
+    float : right;
+    right : 470px;
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+
+}
+
+#deletePersonDIV {
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+}
+
+#addPersonDIV { 
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+}
+
+#assignRoleDIV {
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+}
