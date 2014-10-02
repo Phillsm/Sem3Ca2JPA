@@ -5,6 +5,7 @@
  */
 package restcrud;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -12,13 +13,14 @@ import com.sun.net.httpserver.HttpServer;
 import control.DBFacade;
 import exceptions.NotFoundException;
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import javax.xml.ws.http.HTTPException;
-
+import model.Person;
 /**
  *
  * @author Charlesmaten
@@ -98,7 +100,49 @@ public class RestCRUD {
 //                        status = 404;
 //                    }
                     break;
-
+            case "POST":
+                    try {
+                        InputStreamReader isr = new InputStreamReader(he.getRequestBody(), "utf-8");
+                        BufferedReader br = new BufferedReader(isr);
+                        String jsonQuery = br.readLine();
+                        
+                        Person p = facade.addPersonFromGson(jsonQuery);
+                        
+                        response = new Gson().toJson(p);
+                    } catch(IllegalArgumentException iae) {
+                        status = 400;
+                        response = iae.getMessage();
+                    }
+                    catch(IOException e){
+                        status = 500;
+                        response = "Internal Server Problem";
+                    }
+                    break;
+//            case "PUT":
+//                    break;
+            case "DELETE":
+                try {
+                String path = he.getRequestURI().getPath();
+                int lastIndex = path.lastIndexOf("/");
+                if (lastIndex > 0) {
+                    int id = Integer.parseInt(path.substring(lastIndex + 1));
+                    Person pDeleted = facade.delete(id);
+                    response = new Gson().toJson(pDeleted);
+                }
+                else{
+                    status = 400;
+                    response = "<h1>Bad Request</h1>No id supplied with request";
+                }
+                }
+//                catch(NotFoundException nfe) {
+//                    status = 404;
+//                    response = nfe.getMessage();
+//                }
+                catch (NumberFormatException nfe) {
+                    response = "Id is not a number";
+                    status = 404;
+                }
+            break;
             }
             he.getResponseHeaders().add("Content-Type", "application/json");
             he.sendResponseHeaders(status, 0);
