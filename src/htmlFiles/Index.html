@@ -1,0 +1,66 @@
+<!-- Anders Kaae Pedersen -->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> CA 3 </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.js" type="text/javascript"></script>
+        <script src="buttonfuncJS.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="myCSS.css">
+    </head>
+    <body>
+
+        <div id="headLine"> <h1>CA 2 - WEBSITE</h1> </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div id="findPersonDIV">
+            <h3>FIND PERSON/ALL</h3>
+
+            person ID:
+            <input type="text" name="personid" id="personInput"/>
+            <button id="findPersonBtn">findPerson</button>
+            <button id="findAllBtn">findAll</button>
+
+            <!--findPerson result output-->
+            <p id="personSearchResult"></p>
+            <!--findAll result output-->
+            <div id="findAllresult"></div>
+        </div>
+
+
+        <div id="addAndDeleteDIV">
+            <h3>ADD AND DELETE</h3>
+            
+            
+            <!--findAll result output-->
+            firstname:<input type="text" name="" id="firstNameInput"/><br>
+            lastname<input type="text" name="" id="lastNameInput"/><br>
+            email<input type="text" name="" id="emailInput"/><br>
+            phone<input type="text" name="" id="phoneInput"/><br>
+            
+            <button id="addBtn">add person</button><br>
+            id to delete:<input type="text" name="idToDelete" id="deleteID"/><br>
+            <button id="deleteBtn">delete</button>
+            
+        </div>
+
+        <br>
+
+        <div id="assignRoleDIV">
+            <h3>ASSIGN A ROLE</h3>
+        </div>
+
+
+        <script>
+            $("#findAllBtn").bind("click", showAll);
+            $("#findPersonBtn").bind("click", findPerson);
+        </script>
+
+    </body>
+</html>

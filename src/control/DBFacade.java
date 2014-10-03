@@ -167,12 +167,18 @@ public class DBFacade implements JSONFacade{
   public void createTestData() {
         Person p1;
         Person p2;    
+        Person p3;    
+        Person p4;    
 //      
         DBFacade db = new DBFacade();
-        p1 = new Person("Charles", "Day", "1234", "dk@dk.dk");
-        p2 = new Person("hans", "ole", "4321", "uk@uk.dk");
+        p1 = new Person("Phillip", "Smith", "4321", "uk@uk.dk");
+        p2 = new Person("Anders", "Kaae", "4321", "uk@uk.dk");
+        p3 = new Person("Marcus", "Ulsoe", "4321", "uk@uk.dk");
+        p4 = new Person("Charles", "Day", "1234", "dk@dk.dk");
         db.persist(p1);
         db.persist(p2);
+        db.persist(p3);
+        db.persist(p4);
       
       
         

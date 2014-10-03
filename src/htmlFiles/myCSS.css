@@ -1,0 +1,62 @@
+
+body {  
+
+    background-color : buttonhighlight;
+}
+
+h3 {
+    text-align : center;
+}
+
+h1 {
+   
+    font-family : Lucida Console;
+    font-size : 250%;
+    padding-top : 50px;
+}
+#headLine {
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    color : black;
+    text-align : center;
+    background-color : appworkspace;
+    width : 1000px;
+    height: 130px;
+
+}
+
+#addAndDeleteDIV {
+    border-radius: 25px;
+    float: left;
+    position: relative;
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+    left : 170px;
+
+}
+
+#findPersonDIV {
+    border-radius: 25px;
+    position: relative;
+    float : right;
+    right : 200px;
+    background-color : appworkspace;
+    width : 400px;
+    height: 570px;
+
+}
+
+#assignRoleDIV {
+    position : relative;
+     float: left;
+    border-radius: 25px;
+    margin-top: 300px;
+    right : 230px;
+    background-color : appworkspace;
+    width : 400px;
+    height: 250px;
+    
+}
