@@ -34,7 +34,7 @@ h1 {
     background-color : appworkspace;
     width : 400px;
     height: 250px;
-    left : 470px;
+    left : 170px;
 
 }
 
@@ -42,7 +42,7 @@ h1 {
     border-radius: 25px;
     position: relative;
     float : right;
-    right : 470px;
+    right : 200px;
     background-color : appworkspace;
     width : 400px;
     height: 570px;
@@ -50,11 +50,11 @@ h1 {
 }
 
 #assignRoleDIV {
+    position : relative;
      float: left;
     border-radius: 25px;
     margin-top: 300px;
-    position: fixed;
-    left : 470px;
+    right : 230px;
     background-color : appworkspace;
     width : 400px;
     height: 250px;
