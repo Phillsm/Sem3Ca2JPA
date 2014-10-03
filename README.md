@@ -19,8 +19,11 @@ Få implementation tests, hovedsageligt dbfacade – alle 100% complete
 o	A section stating who did what
 
 Phillip implementere 1,2,3,7
+
 Charles implementere 4, documentation
+
 Anders implementere 5, documentation
+
 Marcus implementere 6 og arbejder på 8 opgave
 
 o	A description of what you have added, apart from step 1-7 in this document
