@@ -3,7 +3,6 @@
 
         function showAll() {
             $.get("http://localhost:8088/person", function(data) {
-                var data = JSON.parse(data);
                 var output = "<table><tr><th>id</th><th>email</th><th>firstName</th><th>lastName</th><th>phone</th></tr>";
                 
                 for(var i = 0; i < data.length; i++) {
@@ -21,7 +20,7 @@
                     type: 'GET',
                     success: function(data) {
                         var data = JSON.parse(data);
-                        $("#findAllresult").html(
+                        $("#personSearchResult").html(
                             "firstName: " + data.firstName + "<br> lastName: " + data.lastName); 
                     },
                     error: function(data, textStatus, jqXHR) {
