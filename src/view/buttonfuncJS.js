@@ -2,7 +2,7 @@
 
 
         function showAll() {
-            $.get("localhost:8088/Persons", function(data) {
+            $.get("http://localhost:8088/person", function(data) {
                 var data = JSON.parse(data);
                 var output = "<table><tr><th>id</th><th>email</th><th>firstName</th><th>lastName</th><th>phone</th></tr>";
                 
@@ -15,9 +15,9 @@
         }
         
         function findPerson() {
-            var id = $("#personid").val();
+            var id = $("#personInput").val();
                 $.ajax({
-                    url: "http://localhost:8088/Person/" + id,
+                    url: "http://localhost:8088/person/" + id,
                     type: 'GET',
                     success: function(data) {
                         var data = JSON.parse(data);
