@@ -9,7 +9,9 @@ Semester 3 Compulsory Assignment 2 JPA / AJAX / REST
 o	A design description of the chosen design.
 
 Vi startede med at gå efter mvc modellen. Dette blev dog senere overset en del grundet vores brug af git, hvor folk lavede deres egen pakker. På den måde sluttede vi af med flere pakker end forventede.
+
 Vi er gået efter at opbygge projektet efter rest princippet. Der er en stil hvorpå man bygger oven på allerede tilgængeligt protokoller 
+
 Vi har brugt json, eftersom det mere læsbart end xml. Samt skulle vi bruge det
 o	A section explaining your test strategy, including test results
 
