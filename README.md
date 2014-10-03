@@ -17,7 +17,7 @@ Vi har brugt json, eftersom det mere læsbart end xml. Samt skulle vi bruge det
 Tests
 -----
 
-Få implementation tests, hovedsageligt dbfacade – alle 100% complete
+simple implementationstests på opg 1,2,3
 
 Arbejdsfordeling
 ----------------
